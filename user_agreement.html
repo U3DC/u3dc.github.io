@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ciphora 用户协议 | User Agreement</title>
+    <style>
+        :root {
+            --primary-color: #0066cc;
+            --text-color: #333;
+            --bg-color: #fff;
+            --secondary-bg: #f8f9fa;
+            --border-color: #e1e4e8;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 0;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        h1 {
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+        
+        .lang-switch {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        
+        .lang-btn {
+            background-color: var(--secondary-bg);
+            border: 1px solid var(--border-color);
+            padding: 8px 15px;
+            margin: 0 5px;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+        
+        .lang-btn.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .policy-content {
+            background-color: var(--secondary-bg);
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        
+        h2 {
+            color: var(--primary-color);
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 10px;
+            margin-top: 30px;
+        }
+        
+        .policy-section {
+            margin-bottom: 20px;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            color: #666;
+            font-size: 0.9em;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        @media (max-width: 600px) {
+            .container {
+                padding: 15px;
+            }
+            
+            .policy-content {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Ciphora</h1>
+            <p>用户协议 | User Agreement</p>
+        </header>
+        
+        <div class="lang-switch">
+            <button class="lang-btn active" onclick="switchLanguage('zh')">中文</button>
+            <button class="lang-btn" onclick="switchLanguage('en')">English</button>
+        </div>
+        
+        <!-- 中文版本 -->
+        <div id="zh-content" class="policy-content">
+            <h2>Ciphora 用户协议</h2>
+            
+            <div class="policy-section">
+                <h3>1. 接受条款</h3>
+                <p>欢迎使用 Ciphora 加密应用（以下简称"本应用"）。本用户协议（以下简称"协议"）是您与 Ciphora 团队之间关于使用本应用的法律协议。请您在使用本应用前仔细阅读本协议的全部内容。</p>
+                <p>使用本应用，即表示您同意接受本协议的所有条款和条件。如果您不同意本协议的任何部分，请不要使用本应用。</p>
+            </div>
+            
+            <div class="policy-section">
+                <h3>2. 服务描述</h3>
+                <p>本应用提供文本加密和解密功能，支持多种加密算法，包括但不限于 AES、RSA、Base64、MD5和摩斯电码。</p>
+            </div>
+            
+            <div class="policy-section">
+                <h3>3. 用户权利与义务</h3>
+                <p>3.1 您有权使用本应用提供的加密和解密功能。</p>
+                <p>3.2 您应对使用本应用的行为负责，并确保您的行为符合当地法律法规。</p>
+                <p>3.3 您不得使用本应用从事任何违法或违反公序良俗的活动。</p>
+            </div>
+            
+            <div class="policy-section">
+                <h3>4. 免责声明</h3>
+                <p>4.1 本应用不对加密内容的安全性提供绝对保证。</p>
+                <p>4.2 对于因使用本应用而导致的任何直接或间接损失，本应用开发团队不承担责任。</p>
+            </div>
+            
+            <div class="policy-section">
+                <h3>5. 协议修改</h3>
+                <p>我们保留随时修改本协议的权利。修改后的协议将在本应用内和本网站上公布，继续使用本应用即表示您接受修改后的协议。</p>
+            </div>
+            
+            <div class="policy-section">
+                <h3>6. 适用法律</h3>
+                <p>本协议的订立、执行和解释及争议的解决均应适用相关法律。</p>
+            </div>
+        </div>
+        
+        <!-- 英文版本 -->
+        <div id="en-content" class="policy-content hidden">
+            <h2>Ciphora User Agreement</h2>
+            
+            <div class="policy-section">
+                <h3>1. Acceptance of Terms</h3>
+                <p>Welcome to the Ciphora encryption application (hereinafter referred to as "the Application"). This User Agreement (hereinafter referred to as "Agreement") is a legal agreement between you and the Ciphora Team regarding the use of this Application. Please read the entire content of this Agreement carefully before using this Application.</p>
+                <p>By using this Application, you agree to accept all terms and conditions of this Agreement. If you do not agree with any part of this Agreement, please do not use this Application.</p>
+            </div>
+            
+            <div class="policy-section">
+                <h3>2. Service Description</h3>
+                <p>This Application provides text encryption and decryption functions, supporting various encryption algorithms, including but not limited to AES, RSA, Base64, MD5, and Morse code.</p>
+            </div>
+            
+            <div class="policy-section">
+                <h3>3. User Rights and Obligations</h3>
+                <p>3.1 You have the right to use the encryption and decryption functions provided by this Application.</p>
+                <p>3.2 You are responsible for your use of this Application and shall ensure that your behavior complies with local laws and regulations.</p>
+                <p>3.3 You may not use this Application to engage in any illegal activities or activities that violate public order and good morals.</p>
+            </div>
+            
+            <div class="policy-section">
+                <h3>4. Disclaimer</h3>
+                <p>4.1 This Application does not provide absolute guarantee for the security of encrypted content.</p>
+                <p>4.2 The Application development team is not responsible for any direct or indirect losses resulting from the use of this Application.</p>
+            </div>
+            
+            <div class="policy-section">
+                <h3>5. Agreement Modification</h3>
+                <p>We reserve the right to modify this Agreement at any time. The modified Agreement will be announced in this Application and on this website, and continued use of this Application indicates your acceptance of the modified Agreement.</p>
+            </div>
+            
+            <div class="policy-section">
+                <h3>6. Applicable Law</h3>
+                <p>The conclusion, execution, interpretation of this Agreement and resolution of disputes shall be governed by applicable laws.</p>
+            </div>
+        </div>
+        
+        <footer>
+            <p>&copy; 2025 Ciphora Team. All rights reserved.</p>
+            <p>Last Updated: May 27, 2025</p>
+        </footer>
+    </div>
+    
+    <script>
+        function switchLanguage(lang) {
+            // 隐藏所有内容
+            document.getElementById('zh-content').classList.add('hidden');
+            document.getElementById('en-content').classList.add('hidden');
+            
+            // 显示选择的语言内容
+            document.getElementById(lang + '-content').classList.remove('hidden');
+            
+            // 更新按钮状态
+            const buttons = document.querySelectorAll('.lang-btn');
+            buttons.forEach(button => {
+                button.classList.remove('active');
+            });
+            
+            // 当前选择的语言按钮高亮显示
+            event.target.classList.add('active');
+        }
+    </script>
+</body>
+</html> 
