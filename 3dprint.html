@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D打印成本计算器</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>3D打印成本计算器</h1>
+        
+        <div class="section">
+            <h2>模型切片参数</h2>
+            <div class="input-group">
+                <label for="modelWeight">模型重量 (克/g)</label>
+                <input type="number" id="modelWeight" min="0" step="0.1">
+            </div>
+            <div class="input-group">
+                <label for="printTime">打印时长 (小时/h)</label>
+                <input type="number" id="printTime" min="0" step="0.1">
+            </div>
+            <div class="input-group">
+                <label for="materialBrand">耗材品牌</label>
+                <select id="materialBrand">
+                    <option value="通用耗材">通用耗材</option>
+                    <option value="品牌1">品牌1</option>
+                    <option value="品牌2">品牌2</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <label for="materialType">耗材型号</label>
+                <select id="materialType">
+                    <option value="PLA">PLA</option>
+                    <option value="ABS">ABS</option>
+                    <option value="PETG">PETG</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <label for="materialPrice">耗材1公斤价格 (元)</label>
+                <input type="number" id="materialPrice" min="0">
+            </div>
+            <div class="input-group">
+                <label for="materialWaste">耗材损耗系数 (%)</label>
+                <input type="number" id="materialWaste" min="0" max="100">
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>加工费用</h2>
+            <div class="input-group">
+                <label for="printerModel">3D打印机型号</label>
+                <select id="printerModel">
+                    <option value="拓竹 P1S">拓竹 P1S</option>
+                    <option value="其他">其他</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <label for="printerCost">打印机成本 (元/小时)</label>
+                <input type="number" id="printerCost" min="0">
+            </div>
+            <div class="input-group">
+                <label for="powerConsumption">每小时耗电 (度)</label>
+                <input type="number" id="powerConsumption" min="0" step="0.1">
+            </div>
+            <div class="input-group">
+                <label for="electricityPrice">每度电价格 (元)</label>
+                <input type="number" id="electricityPrice" min="0" step="0.1">
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>其他费用</h2>
+            <div class="input-group">
+                <label for="postProcessing">后处理费</label>
+                <input type="number" id="postProcessing" min="0">
+                <span class="hint">如打包/安装/拆支撑等费用</span>
+            </div>
+            <div class="input-group">
+                <label for="serviceFee">服务费</label>
+                <input type="number" id="serviceFee" min="0">
+                <span class="hint">修改模型/切片调整等费用</span>
+            </div>
+            <div class="input-group">
+                <label for="shippingFee">运费 (元)</label>
+                <input type="number" id="shippingFee" min="0">
+            </div>
+            <div class="input-group">
+                <label for="tax">税率 (%)</label>
+                <input type="number" id="tax" min="0" max="100">
+            </div>
+        </div>
+
+        <button id="calculate" class="calculate-btn">计算</button>
+
+        <div id="results" class="results">
+            <h2>计算结果</h2>
+            <div class="result-item">
+                <span>材料成本：</span>
+                <span id="materialCost">0.00</span>
+                <span>元</span>
+            </div>
+            <div class="result-item">
+                <span>电费：</span>
+                <span id="electricityCost">0.00</span>
+                <span>元</span>
+            </div>
+            <div class="result-item">
+                <span>设备成本：</span>
+                <span id="equipmentCost">0.00</span>
+                <span>元</span>
+            </div>
+            <div class="result-item">
+                <span>其他费用：</span>
+                <span id="otherCosts">0.00</span>
+                <span>元</span>
+            </div>
+            <div class="result-item total">
+                <span>总成本：</span>
+                <span id="totalCost">0.00</span>
+                <span>元</span>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html> 
