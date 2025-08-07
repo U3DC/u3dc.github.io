@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D打印报价计算器</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            padding: 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        h1, h2 {
+            text-align: center;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin-top: 10px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 1.2em;
+        }
+        .result span {
+            font-weight: bold;
+        }
+        .highlight {
+            color: blue;
+        }
+        .footer {
+            margin-top: 40px;
+            font-size: 0.8em;
+            text-align: center;
+            color: gray;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>3D打印报价计算器</h1>
+        <form id="calculatorForm">
+            <label for="materialCost">耗材成本（元/公斤）</label>
+            <input type="number" id="materialCost" step="0.01" placeholder="请输入耗材成本" required>
+
+            <label for="materialWeight">切片显示重量（克）</label>
+            <input type="number" id="materialWeight" step="0.01" placeholder="请输入切片重量" required>
+
+            <label for="printingTime">打印时长（小时）</label>
+            <input type="number" id="printingTime" step="0.01" placeholder="请输入打印时长（小时）" required>
+
+            <label for="dailyProfitRequirement">单台机器一天利润要求（元/天）</label>
+            <input type="number" id="dailyProfitRequirement" step="0.01" placeholder="请输入单台一天利润要求" required>
+
+            <button type="button" onclick="calculate()">计算</button>
+        </form>
+
+        <div class="result" id="result"></div>
+
+        <div class="footer">
+            本应用由Mark 2开发，免费提供使用。
+        </div>
+    </div>
+
+    <script>
+        function calculate() {
+            const materialCost = parseFloat(document.getElementById("materialCost").value);
+            const materialWeight = parseFloat(document.getElementById("materialWeight").value);
+            const printingTime = parseFloat(document.getElementById("printingTime").value);
+            const dailyProfitRequirement = parseFloat(document.getElementById("dailyProfitRequirement").value);
+
+            if (isNaN(materialCost) || isNaN(materialWeight) || isNaN(printingTime) || isNaN(dailyProfitRequirement)) {
+                alert("请填写所有字段并确保输入的是有效数字！");
+                return;
+            }
+
+            const materialTotalCost = (materialCost / 1000) * materialWeight;
+            const operationTime = printingTime + (10 / 60); // 每次打印的总耗时（包括10分钟操作时间）
+
+            // 计算每天可打印次数
+            const printsPerDay = Math.floor(24 / operationTime);
+            const printsDuringDay = Math.floor(16 / operationTime); // 8:00 到 24:00 共16小时
+
+            // 计算每克报价
+            const pricePerGram24h = (materialTotalCost + (dailyProfitRequirement / printsPerDay)) / materialWeight;
+            const pricePerGram16h = (materialTotalCost + (dailyProfitRequirement / printsDuringDay)) / materialWeight;
+
+            // 耗电量计算（200W功率）
+            const powerConsumption24h = (operationTime * printsPerDay * 200) / 1000; // 单位：度
+            const powerConsumption16h = (operationTime * printsDuringDay * 200) / 1000; // 单位：度
+
+            const resultDiv = document.getElementById("result");
+            resultDiv.innerHTML = `
+                <p>每天最多打印多少次（24小时）：<span>${printsPerDay}</span></p >
+                <p>每天最多打印多少次（16小时）：<span>${printsDuringDay}</span></p >
+                <p>24小时打印以设定的利润要求（${dailyProfitRequirement.toFixed(2)}元/天）每克需报价：<span class="highlight">${pricePerGram24h.toFixed(2)}</span> 元</p >
+                <p>16小时打印以设定的利润要求（${dailyProfitRequirement.toFixed(2)}元/天）每克需报价：<span class="highlight">${pricePerGram16h.toFixed(2)}</span> 元</p >
+                <hr>
+                <p>总耗材成本：<span>${materialTotalCost.toFixed(2)}</span> 元</p >
+                <p>耗电量以200瓦的功率计算：</p >
+                <ul>
+                    <li>24小时耗电量：<span>${powerConsumption24h.toFixed(2)}</span> 度</li>
+                    <li>16小时耗电量：<span>${powerConsumption16h.toFixed(2)}</span> 度</li>
+                </ul>
+            `;
+        }
+    </script>
+</body>
+</html>
