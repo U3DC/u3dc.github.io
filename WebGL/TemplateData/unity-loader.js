@@ -15,15 +15,15 @@ function initializeUnity() {
   // 从HTML中获取配置信息
   const hideFullScreenButton = document.querySelector('meta[name="hide-fullscreen"]')?.content || "false";
   const buildUrl = "Build";
-  const loaderUrl = buildUrl + "/" + (document.querySelector('meta[name="loader-filename"]')?.content || "ef248b911a736218eaa7fcf2aa24448d.loader.js");
+  const loaderUrl = buildUrl + "/" + (document.querySelector('meta[name="loader-filename"]')?.content || "5fac109ee9af27f485a74a69a7c31fec.loader.js");
   
   const config = {
-    dataUrl: buildUrl + "/" + (document.querySelector('meta[name="data-filename"]')?.content || "82253159621bd7c002137f80b78c51e5.data"),
+    dataUrl: buildUrl + "/" + (document.querySelector('meta[name="data-filename"]')?.content || "9b46e964310acef96f68d69b77324e76.data"),
     frameworkUrl: buildUrl + "/" + (document.querySelector('meta[name="framework-filename"]')?.content || "0dc66df7cb7672705a95a07b5b5abff8.framework.js"),
-    codeUrl: buildUrl + "/" + (document.querySelector('meta[name="code-filename"]')?.content || "dba5457bdbbb26f4e7ce5acde7f44eeb.wasm"),
+    codeUrl: buildUrl + "/" + (document.querySelector('meta[name="code-filename"]')?.content || "c01d8b936d3b9342b8e0364a9ba7c4ca.wasm"),
     streamingAssetsUrl: "StreamingAssets",
     companyName: document.querySelector('meta[name="company-name"]')?.content || "DefaultCompany",
-    productName: document.querySelector('meta[name="product-name"]')?.content || "Qidian",
+    productName: document.querySelector('meta[name="product-name"]')?.content || "WebGL",
     productVersion: document.querySelector('meta[name="product-version"]')?.content || "1.0",
   };
 
