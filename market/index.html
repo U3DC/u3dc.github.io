@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>遊戲卡帶收納盒定制</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- EmailJS库 -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-top">
+                <div class="language-selector">
+                    <button id="langBtn" class="lang-btn">語言</button>
+                    <div id="langMenu" class="lang-menu">
+                        <button class="lang-option" data-lang="zh-TW">繁體中文</button>
+                        <button class="lang-option" data-lang="zh-CN">简体中文</button>
+                    </div>
+                </div>
+            </div>
+            <h1 data-i18n="title">遊戲卡帶收納盒定制</h1>
+            <p class="subtitle" data-i18n="subtitle">個性化定制您的專屬收納盒</p>
+        </header>
+
+        <main>
+            <!-- 产品预览区域 -->
+            <section class="preview-section">
+                <h2 data-i18n="previewTitle">產品預覽</h2>
+                <div class="preview-container">
+                    <!-- 实拍效果图轮播 -->
+                    <div class="product-gallery" id="productGallery">
+                        <div class="gallery-container">
+                            <div class="gallery-window">
+                                <div class="gallery-slides" id="gallerySlides">
+                                    <!-- 图片将通过JavaScript动态添加 -->
+                                </div>
+                                <button class="gallery-btn gallery-prev" id="galleryPrev" aria-label="上一张">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M15 18l-6-6 6-6"/>
+                                    </svg>
+                                </button>
+                                <button class="gallery-btn gallery-next" id="galleryNext" aria-label="下一张">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M9 18l6-6-6-6"/>
+                                    </svg>
+                                </button>
+                            </div>
+                            <div class="gallery-indicators" id="galleryIndicators">
+                                <!-- 指示器将通过JavaScript动态添加 -->
+                            </div>
+                        </div>
+                        <p class="gallery-text" data-i18n="galleryText">實拍效果圖</p>
+                    </div>
+
+                    <!-- 定制预览 -->
+                    <div class="product-preview" id="productPreview">
+                        <div class="preview-placeholder">
+                            <div class="preview-box" id="previewBox">
+                                <div class="preview-frame" id="previewFrame">
+                                    <div class="preview-tray" id="previewTray">
+                                        <div class="tray-cell"></div>
+                                        <div class="tray-cell"></div>
+                                        <div class="tray-cell"></div>
+                                        <div class="tray-cell"></div>
+                                        <div class="tray-cell"></div>
+                                        <div class="tray-cell"></div>
+                                        <div class="tray-cell"></div>
+                                        <div class="tray-cell"></div>
+                                        <div class="tray-cell"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="preview-text" data-i18n="previewText">選擇選項查看效果</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 定制选项区域 -->
+            <section class="customize-section">
+                <h2 data-i18n="customizeTitle">定制選項</h2>
+                <div class="options-container">
+                    <!-- 左侧：材质和类型选项 -->
+                    <div class="options-left">
+                        <!-- 框架选项 -->
+                        <div class="option-group">
+                            <label class="option-label" data-i18n="frameMaterialLabel">框架材質類型</label>
+                            <select id="frameType" class="option-select">
+                                <option value="standard" data-i18n="frameStandard">標準</option>
+                                <option value="carbon" data-i18n="frameCarbon">碳纖維</option>
+                            </select>
+                        </div>
+
+                        <!-- 托盘选项 -->
+                        <div class="option-group">
+                            <label class="option-label" data-i18n="trayMaterialLabel">托盤/抽屜材質類型</label>
+                            <select id="trayType" class="option-select">
+                                <option value="standard" data-i18n="trayStandard">標準</option>
+                                <option value="carbon" data-i18n="trayCarbon">碳纖維</option>
+                            </select>
+                        </div>
+
+                        <!-- 游戏卡类型选项 -->
+                        <div class="option-group">
+                            <label class="option-label" data-i18n="cardTypeLabel">托盤/抽屜類型</label>
+                            <div class="card-type-options">
+                                <label class="card-type-option">
+                                    <input type="radio" name="cardType" value="gba" checked>
+                                    <span class="card-type-label">GBA</span>
+                                </label>
+                                <label class="card-type-option">
+                                    <input type="radio" name="cardType" value="switch">
+                                    <span class="card-type-label">Switch</span>
+                                </label>
+                                <label class="card-type-option">
+                                    <input type="radio" name="cardType" value="3ds-nds">
+                                    <span class="card-type-label">3DS/NDS</span>
+                                </label>
+                                <label class="card-type-option">
+                                    <input type="radio" name="cardType" value="gb-gbc">
+                                    <span class="card-type-label">GB/GBC</span>
+                                </label>
+                                <label class="card-type-option">
+                                    <input type="radio" name="cardType" value="psp">
+                                    <span class="card-type-label">PSP</span>
+                                </label>
+                                <label class="card-type-option">
+                                    <input type="radio" name="cardType" value="accessory">
+                                    <span class="card-type-label" data-i18n="accessoryTray">配件托盤</span>
+                                </label>
+                                <label class="card-type-option">
+                                    <input type="radio" name="cardType" value="adapter">
+                                    <span class="card-type-label" data-i18n="adapterTray">無線適配器托盤</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 右侧：颜色选项 -->
+                    <div class="options-right">
+                        <!-- 框架颜色选项 -->
+                        <div class="option-group">
+                            <label class="option-label" data-i18n="frameColorLabel">框架顏色</label>
+                            <div class="color-options" id="frameColorOptions">
+                                <button class="color-btn active" data-color="#2C3E50" style="background-color: #2C3E50;" data-i18n-title="colorDarkBlueGray"></button>
+                                <button class="color-btn" data-color="#E74C3C" style="background-color: #E74C3C;" data-i18n-title="colorRed"></button>
+                                <button class="color-btn" data-color="#3498DB" style="background-color: #3498DB;" data-i18n-title="colorBlue"></button>
+                                <button class="color-btn" data-color="#2ECC71" style="background-color: #2ECC71;" data-i18n-title="colorGreen"></button>
+                                <button class="color-btn" data-color="#F39C12" style="background-color: #F39C12;" data-i18n-title="colorOrange"></button>
+                                <button class="color-btn" data-color="#9B59B6" style="background-color: #9B59B6;" data-i18n-title="colorPurple"></button>
+                                <button class="color-btn" data-color="#1ABC9C" style="background-color: #1ABC9C;" data-i18n-title="colorCyan"></button>
+                                <button class="color-btn" data-color="#34495E" style="background-color: #34495E;" data-i18n-title="colorDarkGray"></button>
+                            </div>
+                        </div>
+
+                        <!-- 托盘/抽屉颜色选项 -->
+                        <div class="option-group">
+                            <label class="option-label" data-i18n="trayColorLabel">托盤/抽屜顏色</label>
+                            <div class="color-options" id="trayColorOptions">
+                                <button class="color-btn active" data-color="#2C3E50" style="background-color: #2C3E50;" data-i18n-title="colorDarkBlueGray"></button>
+                                <button class="color-btn" data-color="#E74C3C" style="background-color: #E74C3C;" data-i18n-title="colorRed"></button>
+                                <button class="color-btn" data-color="#3498DB" style="background-color: #3498DB;" data-i18n-title="colorBlue"></button>
+                                <button class="color-btn" data-color="#2ECC71" style="background-color: #2ECC71;" data-i18n-title="colorGreen"></button>
+                                <button class="color-btn" data-color="#F39C12" style="background-color: #F39C12;" data-i18n-title="colorOrange"></button>
+                                <button class="color-btn" data-color="#9B59B6" style="background-color: #9B59B6;" data-i18n-title="colorPurple"></button>
+                                <button class="color-btn" data-color="#1ABC9C" style="background-color: #1ABC9C;" data-i18n-title="colorCyan"></button>
+                                <button class="color-btn" data-color="#34495E" style="background-color: #34495E;" data-i18n-title="colorDarkGray"></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 产品规格显示 -->
+                <div class="specs-display">
+                    <h3 data-i18n="currentSpecs">當前規格</h3>
+                    <div class="specs-list" id="specsList">
+                        <div class="spec-item">
+                            <span class="spec-label" data-i18n="specFrame">框架：</span>
+                            <span class="spec-value" id="specFrame" data-i18n="frameStandard">標準</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label" data-i18n="specTray">托盤：</span>
+                            <span class="spec-value" id="specTray" data-i18n="trayStandard">標準</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label" data-i18n="specFrameColor">框架顏色：</span>
+                            <span class="spec-value" id="specFrameColor" data-i18n="colorDarkBlueGray">深藍灰</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label" data-i18n="specTrayColor">托盤顏色：</span>
+                            <span class="spec-value" id="specTrayColor" data-i18n="colorDarkBlueGray">深藍灰</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label" data-i18n="specCardType">卡帶類型：</span>
+                            <span class="spec-value" id="specCardType">GBA</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 立即定制按钮 -->
+                <div class="customize-action">
+                    <button class="customize-btn" id="customizeBtn" data-i18n="customizeBtn">立即定制</button>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2024 <span data-i18n="footerText">遊戲卡帶收納盒定制系統</span></p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
